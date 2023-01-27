@@ -1,11 +1,12 @@
-# Welcome to your Jupyter Book
+# Initialise a Repository
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Git works by saving content within a directory, essentially taking a snapshot of the current state of all of the files inside the directory. Make a new directory either in the file explorer or using `mkdir` from the command line, and navigate into it:
+`cd <path>`
 
-Check out the content pages bundled with this sample book to see more.
+Now we need to initialise a repository with Git. A repository, or "repo", is the name for this folder which will be managed by Git. To do this, use
+`git init`
+inside the space. We have now initialised an empty repository, and can now tell Git to start tracking files.
 
-```{tableofcontents}
-```
+![Git Bash output for initialising a new repo](init.png)
+
+Note that Git Bash now has the name `(master)` next to the directory `~/new_repo`. This indicates that the repo was set up successfully inside this directory.

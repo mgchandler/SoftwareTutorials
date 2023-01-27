@@ -1,8 +1,5 @@
-# Welcome to your Jupyter Book
+# Welcome to Matt's Software Tutorials
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+This is a loose collection of tutorials for different bits of software I've found useful at some point. I intend that it may be useful mostly as a reference but may also be good for training on it if needed.
 
-Check out the content pages bundled with this sample book to see more.
+Take a look at the content pages to see what I have currently written up.
