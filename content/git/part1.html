@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to your Jupyter Book &#8212; SoftwareTutorials</title>
+    <title>Initialise a Repository &#8212; SoftwareTutorials</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Welcome to your Jupyter Book" href="../m2tikz/index.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="index.html" />
+    <link rel="prev" title="Git" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -90,11 +90,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">SoftwareTutorials</h1>
@@ -109,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to Matt’s Software Tutorials
                 </a>
             </li>
         </ul>
@@ -131,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Welcome to your Jupyter Book
+     Initialise a Repository
     </a>
    </li>
   </ul>
@@ -226,7 +221,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/mgchandler/SoftwareTutorials"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -243,7 +238,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/git/part1.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mgchandler/SoftwareTutorials/issues/new?title=Issue%20on%20page%20%2Fcontent/git/part1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -320,7 +315,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to your Jupyter Book</h1>
+                <h1>Initialise a Repository</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -332,13 +327,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="initialise-a-repository">
+<h1>Initialise a Repository<a class="headerlink" href="#initialise-a-repository" title="Permalink to this headline">#</a></h1>
+<p>Git works by saving content within a directory, essentially taking a snapshot of the current state of all of the files inside the directory. Make a new directory either in the file explorer or using <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> from the command line, and navigate into it:
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;path&gt;</span></code></p>
+<p>Now we need to initialise a repository with Git. A repository, or “repo”, is the name for this folder which will be managed by Git. To do this, use
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>
+inside the space. We have now initialised an empty repository, and can now tell Git to start tracking files.</p>
+<p><img alt="Git Bash output for initialising a new repo" src="../../_images/init.png" /></p>
+<p>Note that Git Bash now has the name <code class="docutils literal notranslate"><span class="pre">(master)</span></code> next to the directory <code class="docutils literal notranslate"><span class="pre">~/new_repo</span></code>. This indicates that the repo was set up successfully inside this directory.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -372,7 +369,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+            <p class="prev-next-title">Git</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../m2tikz/index.html" title="next page">

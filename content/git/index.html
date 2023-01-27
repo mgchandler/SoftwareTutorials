@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to your Jupyter Book &#8212; SoftwareTutorials</title>
+    <title>Git &#8212; SoftwareTutorials</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Welcome to your Jupyter Book" href="part1.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <link rel="next" title="Initialise a Repository" href="part1.html" />
+    <link rel="prev" title="Welcome to Matt’s Software Tutorials" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -90,11 +90,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">SoftwareTutorials</h1>
@@ -109,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to Matt’s Software Tutorials
                 </a>
             </li>
         </ul>
@@ -131,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="part1.html">
-     Welcome to your Jupyter Book
+     Initialise a Repository
     </a>
    </li>
   </ul>
@@ -226,7 +221,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/mgchandler/SoftwareTutorials"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -243,7 +238,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/git/index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mgchandler/SoftwareTutorials/issues/new?title=Issue%20on%20page%20%2Fcontent/git/index.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -308,23 +303,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to your Jupyter Book</h1>
+                <h1>Git</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -332,17 +374,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="part1.html">Welcome to your Jupyter Book</a></li>
+  <section class="tex2jax_ignore mathjax_ignore" id="git">
+<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
+<p>Git is a version control system which saves multiple versions of a file, or many files within a folder (or directory), to track changes that you make. It started out as a tool to track the development of the Linux kernel source code, and has a reputation for use in software development, but it can (and I recommend that it should!) be used to track any kind of files:</p>
+<ul class="simple">
+<li><p>Papers / theses</p></li>
+<li><p>Project / course work</p></li>
+<li><p>Data from experiments</p></li>
 </ul>
+<p>This tutorial is aimed at Windows users, however the only part this directly affects is installation. Everything else will work the same.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>To get started, <a class="reference external" href="https://git-scm.com/download">download</a> and install the appropriate version of Git. Get to a point where you can open a command window and type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> and get a response back.
+<img alt="Example of output on Windows" src="../../_images/version.png" /></p>
+<p>From here, you can either continue to use the command line, or launch Git Bash</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h2>
+<p>For personal use, there isn’t much need to do any configuration as any actions made to keep track of changes to files will be performed by a single user. This information is stored locally and will remain private at this stage, and will not be shared unless you decide to use a backup service such as GitHub or GitLab. When working on larger projects or collaborations, having identifying information is very important to track who is making which changes.</p>
+<p>Set your name using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.name</span> <span class="pre">&lt;Your</span> <span class="pre">name&gt;</span></code>
+and your email address using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.email</span> <span class="pre">&lt;your_email&gt;</span></code></p>
+<p>You will also need to set a text editor. You can make use of command line editors such as <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vim</span></code>, and on Windows you can use an external application such as Notepad or Notepad++, however to do this you will need to provide the full path to the .exe file.
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&lt;preferred</span> <span class="pre">editor&gt;</span></code></p>
+</section>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -377,13 +434,13 @@ It does not go in-depth into any particular topic - check out <a class="referenc
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+            <p class="prev-next-title">Welcome to Matt’s Software Tutorials</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="part1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Initialise a Repository</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
