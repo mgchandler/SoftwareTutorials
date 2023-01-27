@@ -10,7 +10,7 @@ This tutorial is aimed at Windows users, however the only part this directly aff
 ## Installation
 
 To get started, [download](https://git-scm.com/download) and install the appropriate version of Git. Get to a point where you can open a command window and type `git --version` and get a response back.
-![Example of output on Windows](version.png)
+<img src="version.png" alt="Example of output on Windows" width="200"/>
 
 From here, you can either continue to use the command line, or launch Git Bash
 

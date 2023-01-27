@@ -7,6 +7,6 @@ Now we need to initialise a repository with Git. A repository, or "repo", is the
 `git init`
 inside the space. We have now initialised an empty repository, and can now tell Git to start tracking files.
 
-![Git Bash output for initialising a new repo](init.png)
+<img src="init.png" alt="Git Bash output for initialising a new repo" width="200"/>
 
 Note that Git Bash now has the name `(master)` next to the directory `~/new_repo`. This indicates that the repo was set up successfully inside this directory.
