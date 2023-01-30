@@ -143,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../m2tikz/part1.html">
-     Welcome to your Jupyter Book
+     Workarounds
     </a>
    </li>
   </ul>
@@ -385,19 +385,25 @@ title="Print to PDF"
 <p>This tutorial is aimed at Windows users, however the only part this directly affects is installation. Everything else will work the same.</p>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
-<p>To get started, <a class="reference external" href="https://git-scm.com/download">download</a> and install the appropriate version of Git. Get to a point where you can open a command window and type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> and get a response back.
-<a class="reference internal" href="../../_images/version.png"><img alt="Example of output on Windows" src="../../_images/version.png" style="width: 200px;" /></a></p>
+<p>To get started, <a class="reference external" href="https://git-scm.com/download">download</a> and install the appropriate version of Git. Get to a point where you can open a command window and type <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> and get a response back.</p>
+<a class="reference internal image-reference" href="../../_images/version.png"><img alt="Example of output on Windows" src="../../_images/version.png" style="width: 500px;" /></a>
 <p>From here, you can either continue to use the command line, or launch Git Bash</p>
 </section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h2>
 <p>For personal use, there isn’t much need to do any configuration as any actions made to keep track of changes to files will be performed by a single user. This information is stored locally and will remain private at this stage, and will not be shared unless you decide to use a backup service such as GitHub or GitLab. When working on larger projects or collaborations, having identifying information is very important to track who is making which changes.</p>
-<p>Set your name using
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.name</span> <span class="pre">&lt;Your</span> <span class="pre">name&gt;</span></code>
-and your email address using
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.email</span> <span class="pre">&lt;your_email&gt;</span></code></p>
-<p>You will also need to set a text editor. You can make use of command line editors such as <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vim</span></code>, and on Windows you can use an external application such as Notepad or Notepad++, however to do this you will need to provide the full path to the .exe file.
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&lt;preferred</span> <span class="pre">editor&gt;</span></code></p>
+<p>Set your name using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">Your</span> <span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>and your email address using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">&lt;</span><span class="n">your_email</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You will also need to set a text editor. You can make use of command line editors such as <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vim</span></code>, and on Windows you can use an external application such as Notepad or Notepad++, however to do this you will need to provide the full path to the .exe file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">core</span><span class="o">.</span><span class="n">editor</span> <span class="o">&lt;</span><span class="n">preferred</span> <span class="n">editor</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>

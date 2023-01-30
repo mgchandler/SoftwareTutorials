@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to your Jupyter Book &#8212; SoftwareTutorials</title>
+    <title>Workarounds &#8212; SoftwareTutorials</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="index.html" />
+    <link rel="prev" title="matlab2tikz" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -142,7 +142,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Welcome to your Jupyter Book
+     Workarounds
     </a>
    </li>
   </ul>
@@ -314,7 +314,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to your Jupyter Book</h1>
+                <h1>Workarounds</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -326,13 +326,37 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="workarounds">
+<h1>Workarounds<a class="headerlink" href="#workarounds" title="Permalink to this headline">#</a></h1>
+<p>There are a few issues which may arise when using matlab2tikz for the first time.</p>
+<ul class="simple">
+<li><p>Filenames included as an argument (e.g. <code class="docutils literal notranslate"><span class="pre">matlab2tikz(filename)</span></code>) must be character arrays rather than strings. Either explicitly convert to <code class="docutils literal notranslate"><span class="pre">char</span></code> or make sure to use ‘ rather than “.</p></li>
+<li><p>Latex may throw errors if plots include high-resolution colormaps (e.g. <code class="docutils literal notranslate"><span class="pre">imagesc</span></code> or 3D surfaces) - files will be too big if they are more than a few kB. Use the <code class="docutils literal notranslate"><span class="pre">cleanfigure()</span></code> function included with the add-on to reduce content. Check the arguments if the wrong kind of features are being removed - e.g. use <code class="docutils literal notranslate"><span class="pre">cleanfigure('pruneText',</span> <span class="pre">false)</span></code> if annotations are being removed that shouldn’t be.</p></li>
+<li><p>If your Latex document has anything other than an a4 layout with normal margins, the size of the final image may be wrong. Use argument pair <code class="docutils literal notranslate"><span class="pre">'width',</span> <span class="pre">'0.8\linewidth'</span></code> in the call to <code class="docutils literal notranslate"><span class="pre">matlab2tikz</span></code> to set it to 80% of the linewidth - determined by Latex on compilation.</p></li>
+<li><p>matlab2tikz will try to make all text look as it does in Matlab. If you have math-rendered content, make sure it looks right in Matlab first (e.g. change the interpreter to <code class="docutils literal notranslate"><span class="pre">tex</span></code>) rather than trying to edit the <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file to make it look right.</p></li>
+<li><p>If you are not saving your figures in the same directory as your <code class="docutils literal notranslate"><span class="pre">main.tex</span></code>, any sub-includes (e.g. if matlab2tikz makes a <code class="docutils literal notranslate"><span class="pre">.png</span></code> file) must point to the right place. You can either edit the <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file directly, or include the argument pair <code class="docutils literal notranslate"><span class="pre">'relativeDataPath',</span> <span class="pre">path</span></code> where <code class="docutils literal notranslate"><span class="pre">path</span></code> is a character array pointing to the correct location of your <code class="docutils literal notranslate"><span class="pre">.png</span></code> relative to <code class="docutils literal notranslate"><span class="pre">main.tex</span></code>.</p></li>
+</ul>
+<p>I’ve compiled my workarounds to all of this in the following function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">m2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">varargin</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">Wrapper</span> <span class="k">for</span> <span class="n">matlab2tikz</span> <span class="n">which</span> <span class="n">solves</span> <span class="n">the</span> <span class="n">problems</span> <span class="n">I</span> <span class="n">have</span> <span class="n">had</span><span class="o">.</span> <span class="n">Leaves</span> <span class="nb">all</span>
+<span class="o">%</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">file</span><span class="p">,</span> <span class="n">sets</span> <span class="n">the</span> <span class="n">figure</span> <span class="n">size</span> <span class="n">to</span> <span class="mi">80</span><span class="o">%</span> <span class="n">of</span> <span class="n">linewidth</span><span class="p">,</span> <span class="ow">and</span> <span class="n">includes</span>
+<span class="o">%</span> <span class="n">the</span> <span class="n">option</span> <span class="k">for</span> <span class="n">a</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">figure</span> <span class="n">location</span><span class="o">.</span>
+
+<span class="k">if</span> <span class="o">~</span><span class="n">isempty</span><span class="p">(</span><span class="n">findobj</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">))</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">char</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+    <span class="n">cleanfigure</span><span class="p">(</span><span class="s1">&#39;pruneText&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nargin</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">matlab2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8\linewidth&#39;</span><span class="p">,</span> <span class="s1">&#39;mathmode&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">char</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">});</span>
+        <span class="n">matlab2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8\linewidth&#39;</span><span class="p">,</span> <span class="s1">&#39;mathmode&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="s1">&#39;relativeDataPath&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">end</span>
+<span class="k">else</span>
+    <span class="k">return</span>
+<span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -366,7 +390,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+            <p class="prev-next-title">matlab2tikz</p>
         </div>
     </a>
 </div>

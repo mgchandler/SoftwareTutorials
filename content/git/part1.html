@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Welcome to your Jupyter Book" href="../m2tikz/index.html" />
+    <link rel="next" title="matlab2tikz" href="../m2tikz/index.html" />
     <link rel="prev" title="Git" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -143,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../m2tikz/part1.html">
-     Welcome to your Jupyter Book
+     Workarounds
     </a>
    </li>
   </ul>
@@ -303,12 +303,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-files">
+   Adding files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-files">
+   Saving files
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -320,6 +349,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-files">
+   Adding files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-files">
+   Saving files
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -329,13 +376,41 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="initialise-a-repository">
 <h1>Initialise a Repository<a class="headerlink" href="#initialise-a-repository" title="Permalink to this headline">#</a></h1>
-<p>Git works by saving content within a directory, essentially taking a snapshot of the current state of all of the files inside the directory. Make a new directory either in the file explorer or using <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> from the command line, and navigate into it:
-<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;path&gt;</span></code></p>
-<p>Now we need to initialise a repository with Git. A repository, or “repo”, is the name for this folder which will be managed by Git. To do this, use
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>
-inside the space. We have now initialised an empty repository, and can now tell Git to start tracking files.</p>
-<a class="reference internal image-reference" href="../../_images/init.png"><img alt="Git Bash output for initialising a new repo" src="../../_images/init.png" style="width: 200px;" /></a>
+<p>Git works by saving content within a directory, essentially taking a snapshot of the current state of all of the files inside the directory. Make a new directory either in the file explorer or using <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> from the command line, and navigate into it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now we need to initialise a repository with Git. A repository, or “repo”, is the name for this folder which will be managed by Git. To do this, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>inside the space. We have now initialised an empty repository, and can now tell Git to start tracking files.</p>
+<a class="reference internal image-reference" href="../../_images/init.png"><img alt="Git Bash output for initialising a new repo" src="../../_images/init.png" style="width: 500px;" /></a>
 <p>Note that Git Bash now has the name <code class="docutils literal notranslate"><span class="pre">(master)</span></code> next to the directory <code class="docutils literal notranslate"><span class="pre">~/new_repo</span></code>. This indicates that the repo was set up successfully inside this directory.</p>
+<section id="adding-files">
+<h2>Adding files<a class="headerlink" href="#adding-files" title="Permalink to this headline">#</a></h2>
+<p>We can now start using Git to manage files. Make a new text file in the repo.</p>
+<a class="reference internal image-reference" href="../../_images/file.png"><img alt="Text file in repo" src="../../_images/file.png" style="width: 500px;" /></a>
+<p>Currently, the text file <code class="docutils literal notranslate"><span class="pre">readme.txt</span></code> is located within the repo directory. Git will keep track of what’s going on inside the repo - we can check this using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/status.png"><img alt="Output from git status" src="../../_images/status.png" style="width: 500px;" /></a>
+<p>We can see that the file has been detected in the repo, but it is not yet being tracked. To tell Git to start tracking the file, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git add readme.txt`
+</pre></div>
+</div>
+<p>We can add multiple files at once by chaining filenames, or use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>to add everything in the directory at once.</p>
+<a class="reference internal image-reference" href="../../_images/add-file.png"><img alt="Add a file to be tracked" src="../../_images/add-file.png" style="width: 500px;" /></a>
+</section>
+<section id="saving-files">
+<h2>Saving files<a class="headerlink" href="#saving-files" title="Permalink to this headline">#</a></h2>
+<p>We can see that Git has detected that something had changed: we had told it to start tracking the file <code class="docutils literal notranslate"><span class="pre">readme.txt</span></code>. At the moment, we haven’t actually saved anything</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -375,7 +450,7 @@ inside the space. We have now initialised an empty repository, and can now tell 
     <a class='right-next' id="next-link" href="../m2tikz/index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">matlab2tikz</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

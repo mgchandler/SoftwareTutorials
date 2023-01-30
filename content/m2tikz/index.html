@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to your Jupyter Book &#8212; SoftwareTutorials</title>
+    <title>matlab2tikz &#8212; SoftwareTutorials</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Welcome to your Jupyter Book" href="part1.html" />
+    <link rel="next" title="Workarounds" href="part1.html" />
     <link rel="prev" title="Initialise a Repository" href="../git/part1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -143,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="part1.html">
-     Welcome to your Jupyter Book
+     Workarounds
     </a>
    </li>
   </ul>
@@ -303,23 +303,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to your Jupyter Book</h1>
+                <h1>matlab2tikz</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -327,17 +364,28 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="matlab2tikz">
+<h1>matlab2tikz<a class="headerlink" href="#matlab2tikz" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://github.com/matlab2tikz/matlab2tikz">matlab2tikz</a> is an add-on for Matlab which produces .tex files for inclusion in Latex documents. When creating figures and saving them as .jpg or .png files, it is burdensome to determine the fontsize for axes, labels, etc within the figure to ensure they are readable in the final document. Additionally, I have never managed to get all font sizes the same size as figures with different widths will lead to slight changes in the font size of the final image.</p>
+<p>A solution to this problem is matlab2tikz. It is a function in Matlab which draws out the figures as a <code class="docutils literal notranslate"><span class="pre">tikzpicture</span></code> object, allowing Latex to take care of the text processing. As it was a bit of a faff to get set up, the process it took me to get it working is documented here.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>Install <a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz">matlab2tikz</a> from the Matlab FileExchange.</p>
+<p>Plot your figures in Matlab. Note that I experienced a few issues when using certain features - the workarounds I came up with are listed on the next page.</p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">matlab2tikz</span></code> either in the script or in the command window. Save the file with some filename as <code class="docutils literal notranslate"><span class="pre">&lt;filename&gt;.tex</span></code> - this take the currently open figure and save a <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file which can be included in your Latex document.</p>
+<p>Move your <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file and any accompanying files (e.g. sometimes a <code class="docutils literal notranslate"><span class="pre">.png</span></code> file may be generated as well) to your Latex project directory (or upload them to Overleaf, etc.).</p>
+<p>Within the preamble of the Latex document, add in the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">usepackage</span><span class="p">{</span><span class="n">pgfplots</span><span class="p">}</span>
+\<span class="n">pgfplotsset</span><span class="p">{</span><span class="n">compat</span><span class="o">=</span><span class="n">newest</span><span class="p">}</span>
+\<span class="n">usetikzlibrary</span><span class="p">{</span><span class="n">plotmarks</span><span class="p">}</span>
+\<span class="n">usetikzlibrary</span><span class="p">{</span><span class="n">arrows</span><span class="o">.</span><span class="n">meta</span><span class="p">}</span>
+\<span class="n">usepgfplotslibrary</span><span class="p">{</span><span class="n">patchplots</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">grffile</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In the body at the desired location, use the command <code class="docutils literal notranslate"><span class="pre">\input{&lt;filename&gt;.tex</span></code> to include the figure.</p>
+</section>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="part1.html">Welcome to your Jupyter Book</a></li>
-</ul>
 </div>
 </section>
 
@@ -378,7 +426,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
     <a class='right-next' id="next-link" href="part1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Workarounds</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
