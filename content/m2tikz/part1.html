@@ -336,20 +336,55 @@ title="Print to PDF"
 <li><p>matlab2tikz will try to make all text look as it does in Matlab. If you have math-rendered content, make sure it looks right in Matlab first (e.g. change the interpreter to <code class="docutils literal notranslate"><span class="pre">tex</span></code>) rather than trying to edit the <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file to make it look right.</p></li>
 <li><p>If you are not saving your figures in the same directory as your <code class="docutils literal notranslate"><span class="pre">main.tex</span></code>, any sub-includes (e.g. if matlab2tikz makes a <code class="docutils literal notranslate"><span class="pre">.png</span></code> file) must point to the right place. You can either edit the <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file directly, or include the argument pair <code class="docutils literal notranslate"><span class="pre">'relativeDataPath',</span> <span class="pre">path</span></code> where <code class="docutils literal notranslate"><span class="pre">path</span></code> is a character array pointing to the correct location of your <code class="docutils literal notranslate"><span class="pre">.png</span></code> relative to <code class="docutils literal notranslate"><span class="pre">main.tex</span></code>.</p></li>
 </ul>
-<p>I’ve compiled my workarounds to all of this in the following function:</p>
+<p>There are solutions to more common problems and pitfalls on matlab2tikz’s own <a class="reference external" href="https://github.com/matlab2tikz/matlab2tikz">GitHub page</a> - see there if you’re having other problems.</p>
+<p>I’ve compiled my workarounds to all of this in the <a class="reference external" href="https://github.com/mgchandler/SoftwareTutorials/tree/main/content/m2tikz/m2tikz.m">following function</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">m2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">varargin</span><span class="p">)</span>
 <span class="o">%</span> <span class="n">Wrapper</span> <span class="k">for</span> <span class="n">matlab2tikz</span> <span class="n">which</span> <span class="n">solves</span> <span class="n">the</span> <span class="n">problems</span> <span class="n">I</span> <span class="n">have</span> <span class="n">had</span><span class="o">.</span> <span class="n">Leaves</span> <span class="nb">all</span>
 <span class="o">%</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">file</span><span class="p">,</span> <span class="n">sets</span> <span class="n">the</span> <span class="n">figure</span> <span class="n">size</span> <span class="n">to</span> <span class="mi">80</span><span class="o">%</span> <span class="n">of</span> <span class="n">linewidth</span><span class="p">,</span> <span class="ow">and</span> <span class="n">includes</span>
 <span class="o">%</span> <span class="n">the</span> <span class="n">option</span> <span class="k">for</span> <span class="n">a</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">figure</span> <span class="n">location</span><span class="o">.</span>
+<span class="o">%</span>
+<span class="o">%</span> <span class="n">Syntax</span><span class="p">:</span>
+<span class="o">%</span>   <span class="n">m2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="o">%</span>   <span class="n">m2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="o">%</span>   <span class="n">m2tikz</span><span class="p">(</span><span class="n">___</span><span class="p">,</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Value</span><span class="p">)</span>
+<span class="o">%</span>
+<span class="o">%</span> <span class="n">Parameters</span><span class="p">:</span>
+<span class="o">%</span>   <span class="n">filename</span> <span class="p">:</span> <span class="n">char</span> <span class="ow">or</span> <span class="n">string</span>
+<span class="o">%</span>   <span class="n">path</span><span class="p">:</span> <span class="n">char</span> <span class="ow">or</span> <span class="n">string</span>
+<span class="o">%</span>   <span class="n">Name</span><span class="o">-</span><span class="n">Value</span> <span class="n">Arguments</span><span class="p">:</span>
+<span class="o">%</span>       <span class="n">Passed</span> <span class="n">directly</span> <span class="n">into</span> <span class="n">matlab2tikz</span> <span class="o">-</span> <span class="n">see</span> <span class="n">their</span> <span class="n">documentation</span><span class="o">.</span>
 
 <span class="k">if</span> <span class="o">~</span><span class="n">isempty</span><span class="p">(</span><span class="n">findobj</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">))</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="n">char</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
     <span class="n">cleanfigure</span><span class="p">(</span><span class="s1">&#39;pruneText&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">Do</span> <span class="n">the</span> <span class="n">default</span> <span class="n">process</span>
     <span class="k">if</span> <span class="n">nargin</span> <span class="o">==</span> <span class="mi">1</span>
         <span class="n">matlab2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8\linewidth&#39;</span><span class="p">,</span> <span class="s1">&#39;mathmode&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">)</span>
-    <span class="k">else</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">char</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">});</span>
-        <span class="n">matlab2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8\linewidth&#39;</span><span class="p">,</span> <span class="s1">&#39;mathmode&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="s1">&#39;relativeDataPath&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">More</span> <span class="n">options</span> <span class="n">provided</span> <span class="n">on</span> <span class="n">top</span><span class="p">,</span> <span class="n">unpack</span> <span class="n">using</span> <span class="n">defaults</span><span class="o">.</span>
+    <span class="n">elseif</span> <span class="n">nargin</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="o">%</span> <span class="n">Make</span> <span class="n">a</span> <span class="n">structure</span> <span class="n">which</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">default</span> <span class="n">arguments</span><span class="o">.</span> <span class="n">Then</span>
+        <span class="o">%</span> <span class="n">overwrite</span> <span class="n">them</span> <span class="n">later</span> <span class="k">if</span> <span class="n">they</span> <span class="n">are</span> <span class="n">specified</span><span class="o">.</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">struct</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8\linewidth&#39;</span><span class="p">,</span> <span class="s1">&#39;mathmode&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+        <span class="o">%</span> <span class="n">Path</span> <span class="n">may</span> <span class="ow">or</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">listed</span> <span class="k">with</span> <span class="n">its</span> <span class="n">argument</span> <span class="n">handle</span> <span class="n">name</span> <span class="o">-</span>
+        <span class="o">%</span> <span class="n">check</span> <span class="k">if</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">or</span> <span class="ow">not</span><span class="o">.</span>
+        <span class="k">if</span> <span class="n">mod</span><span class="p">(</span><span class="n">nargin</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="o">%</span> <span class="n">Path</span> <span class="n">must</span> <span class="n">be</span> <span class="n">listed</span> <span class="n">without</span> <span class="n">argument</span> <span class="n">name</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">relativeDataPath</span> <span class="o">=</span> <span class="n">char</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">});</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="o">%</span> <span class="n">Else</span> <span class="n">path</span> <span class="n">must</span> <span class="n">be</span> <span class="n">listed</span> <span class="k">with</span> <span class="n">argument</span> <span class="n">name</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">end</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:(</span><span class="n">nargin</span><span class="o">-</span><span class="n">start</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">args</span><span class="o">.</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">arg</span><span class="o">-</span><span class="mi">1</span><span class="p">)})</span> <span class="o">=</span> <span class="n">char</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">arg</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
+        <span class="n">end</span>
+        <span class="n">unpack</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="n">fieldnames</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">struct2cell</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">size</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">unpack</span> <span class="o">=</span> <span class="p">{</span><span class="n">unpack</span><span class="p">{:},</span> <span class="n">names</span><span class="p">{</span><span class="n">arg</span><span class="p">},</span> <span class="n">vals</span><span class="p">{</span><span class="n">arg</span><span class="p">}};</span>
+        <span class="n">end</span>
+        <span class="n">matlab2tikz</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">unpack</span><span class="p">{:})</span>
     <span class="n">end</span>
 <span class="k">else</span>
     <span class="k">return</span>
@@ -371,7 +406,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./content/m2tikz"
         },
         predefinedOutput: true
