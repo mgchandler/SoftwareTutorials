@@ -4,6 +4,8 @@
 
 A solution to this problem is matlab2tikz. It is a function in Matlab which draws out the figures as a `tikzpicture` object, allowing Latex to take care of the text processing. As it was a bit of a faff to get set up, the process it took me to get it working is documented here.
 
+(Note - there is a [python version for matplotlib](https://pypi.org/project/matplotlib2tikz/). I intend to move to this eventually but haven't yet)
+
 ## Installation
 
 Install [matlab2tikz](https://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz) from the Matlab FileExchange.
