@@ -6,10 +6,10 @@
 
 Install the appropriate [mambaforge](https://github.com/conda-forge/miniforge#mambaforge) file and run it.
 
-<img src="install.png" alt="Installation Prompt" width="400"/>
+<img src="install.png" alt="Installation Prompt" width="500"/>
 
 After installation, run the program `Miniforge Prompt`. Verify that it has installed correctly using command `mamba --version`.
 
 <img src="program.png" alt="Start Menu program" width="300"/>
 
-<img src="prompt.png" alt="Miniforge prompt w/ version" width="500"/>
+<img src="prompt.png" alt="Miniforge prompt w/ version" width="750"/>
