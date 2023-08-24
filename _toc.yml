@@ -17,3 +17,8 @@ parts:
         title: matlab2tikz
         sections:
           - file: content/m2tikz/part1
+      
+      - file: content/mamba/index
+        title: Mamba
+        sections:
+          - file: content/mamba/part1
