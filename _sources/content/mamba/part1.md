@@ -2,7 +2,7 @@
 
 Mamba discourages the installation of anything in the base environment. Instead, it is recommended to make new environments to install packages to. In my installation, I have four additional ones:
 
-<img src="environments.png" alt="Matt's Python Environments" width="400"/>
+<img src="environments.png" alt="Matt's Python Environments" width="750"/>
 
 - `daily` : a scratch environment for Python work which doesn't have many package requirements.
 - `playground` : an experimental scratch environment for playing with new packages, which won't impact my daily use.
