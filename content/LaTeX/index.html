@@ -418,7 +418,7 @@ document.write(`
 
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\View</span><span class="nb">}</span>[2]<span class="nb">{</span><span class="k">\textAsMath</span><span class="nb">{</span>#1<span class="nb">}</span>--<span class="k">\textAsMath</span><span class="nb">{</span>#2<span class="nb">}}</span> <span class="c">% Join transmit and receive paths</span>
 <span class="k">\def\fmtloop</span>#1<span class="nb">{</span><span class="c">%</span>
-  <span class="k">\ifx\relax</span>#1 <span class="c">% If at end of the string</span>
+  <span class="k">\ifx\relax</span>#1 <span class="c">% If at end of the string, do nothing</span>
     <span class="k">\else</span>
       <span class="k">\ifcat_</span>#1 <span class="c">% If subscript</span>
         #1
