@@ -25,7 +25,7 @@ Originally found [here](https://tex.stackexchange.com/questions/85335/how-to-cha
 ```
 
 
-### Easy view names
+### Easy subscript text
 
 My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that "Views" have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing ``L$_\text{S}$L--L$_\text{S}$L``. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution based on [this thread](https://tex.stackexchange.com/questions/359189/looping-over-strings) to make it nicer.
 

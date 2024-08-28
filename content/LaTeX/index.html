@@ -374,7 +374,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Macros</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dotfill">Dotfill</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-view-names">Easy view names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-subscript-text">Easy subscript text</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion">Unit conversion</a></li>
 </ul>
 </li>
@@ -410,8 +410,8 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="easy-view-names">
-<h3>Easy view names<a class="headerlink" href="#easy-view-names" title="Permalink to this heading">#</a></h3>
+<section id="easy-subscript-text">
+<h3>Easy subscript text<a class="headerlink" href="#easy-subscript-text" title="Permalink to this heading">#</a></h3>
 <p>My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that “Views” have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing <code class="docutils literal notranslate"><span class="pre">L$_\text{S}$L--L$_\text{S}$L</span></code>. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution based on <a class="reference external" href="https://tex.stackexchange.com/questions/359189/looping-over-strings">this thread</a> to make it nicer.</p>
 <div class="highlight-tex notranslate"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span> <span class="c">% For \ensuremath{}</span>
@@ -569,7 +569,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Macros</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dotfill">Dotfill</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-view-names">Easy view names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-subscript-text">Easy subscript text</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion">Unit conversion</a></li>
 </ul>
 </li>
