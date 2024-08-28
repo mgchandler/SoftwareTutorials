@@ -35,7 +35,7 @@ My PhD thesis was all about ultrasonic imaging using the multi-view total focusi
 
 \newcommand{\View}[2]{\textAsMath{#1}--\textAsMath{#2}} % Join transmit and receive paths
 \def\fmtloop#1{%
-  \ifx\relax#1 % If at end of the string
+  \ifx\relax#1 % If at end of the string, do nothing
     \else
       \ifcat_#1 % If subscript
         #1
