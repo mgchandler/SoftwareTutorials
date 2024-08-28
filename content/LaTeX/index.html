@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>matlab2tikz &#8212; SoftwareTutorials</title>
+    <title>LaTeX &#8212; SoftwareTutorials</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/m2tikz/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/LaTeX/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Workarounds" href="part1.html" />
-    <link rel="prev" title="LaTeX" href="../LaTeX/index.html" />
+    <link rel="next" title="matlab2tikz" href="../m2tikz/index.html" />
+    <link rel="prev" title="Setting up a new environment" href="../mamba/part1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,9 +172,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../mamba/part1.html">Setting up a new environment</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../LaTeX/index.html">LaTeX</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">matlab2tikz</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="part1.html">Workarounds</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LaTeX</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../m2tikz/index.html">matlab2tikz</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../m2tikz/part1.html">Workarounds</a></li>
 </ul>
 </li>
 </ul>
@@ -248,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/mgchandler/SoftwareTutorials/issues/new?title=Issue%20on%20page%20%2Fcontent/m2tikz/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mgchandler/SoftwareTutorials/issues/new?title=Issue%20on%20page%20%2Fcontent/LaTeX/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/m2tikz/index.md" target="_blank"
+      <li><a href="../../_sources/content/LaTeX/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +362,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>matlab2tikz</h1>
+    <h1>LaTeX</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,7 +372,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Macros</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dotfill">Dotfill</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-view-names">Easy view names</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -384,30 +388,56 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="matlab2tikz">
-<h1>matlab2tikz<a class="headerlink" href="#matlab2tikz" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://github.com/matlab2tikz/matlab2tikz">matlab2tikz</a> is an add-on for Matlab which produces .tex files for inclusion in Latex documents. When creating figures and saving them as .jpg or .png files, it is burdensome to determine the fontsize for axes, labels, etc within the figure to ensure they are readable in the final document. Additionally, I have never managed to get all font sizes the same size as figures with different widths will lead to slight changes in the font size of the final image.</p>
-<p>A solution to this problem is matlab2tikz. It is a function in Matlab which draws out the figures as a <code class="docutils literal notranslate"><span class="pre">tikzpicture</span></code> object, allowing Latex to take care of the text processing. As it was a bit of a faff to get set up, the process it took me to get it working is documented here.</p>
-<p>(Note - there is a <a class="reference external" href="https://pypi.org/project/matplotlib2tikz/">python version for matplotlib</a>. I intend to move to this eventually but haven’t yet)</p>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Install <a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz">matlab2tikz</a> from the Matlab FileExchange.</p>
-<p>Plot your figures in Matlab. Note that I experienced a few issues when using certain features - the workarounds I came up with are listed on the next page.</p>
-<p>Call <code class="docutils literal notranslate"><span class="pre">matlab2tikz</span></code> either in the script or in the command window. Save the file with some filename as <code class="docutils literal notranslate"><span class="pre">&lt;filename&gt;.tex</span></code> - this take the currently open figure and save a <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file which can be included in your Latex document.</p>
-<p>Move your <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file and any accompanying files (e.g. sometimes a <code class="docutils literal notranslate"><span class="pre">.png</span></code> file may be generated as well) to your Latex project directory (or upload them to Overleaf, etc.).</p>
-<p>Within the preamble of the Latex document, add in the following lines:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">usepackage</span><span class="p">{</span><span class="n">pgfplots</span><span class="p">}</span>
-\<span class="n">pgfplotsset</span><span class="p">{</span><span class="n">compat</span><span class="o">=</span><span class="n">newest</span><span class="p">}</span>
-\<span class="n">usetikzlibrary</span><span class="p">{</span><span class="n">plotmarks</span><span class="p">}</span>
-\<span class="n">usetikzlibrary</span><span class="p">{</span><span class="n">arrows</span><span class="o">.</span><span class="n">meta</span><span class="p">}</span>
-\<span class="n">usepgfplotslibrary</span><span class="p">{</span><span class="n">patchplots</span><span class="p">}</span>
-\<span class="n">usepackage</span><span class="p">{</span><span class="n">grffile</span><span class="p">}</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="latex">
+<h1>LaTeX<a class="headerlink" href="#latex" title="Permalink to this heading">#</a></h1>
+<p>This is a collection of useful tips and tricks for using LaTeX. This is not a guide to use LaTeX - if you don’t know how to use it, I recommend you use <a class="reference external" href="https://www.overleaf.com">Overleaf</a> to get started (it is cloud based so you don’t have to install anything). Find an example project and use that to begin with.</p>
+<section id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading">#</a></h2>
+<p>The equivalent of functions in programming, you can use macros to make repetitive actions easier.</p>
+<section id="dotfill">
+<h3>Dotfill<a class="headerlink" href="#dotfill" title="Permalink to this heading">#</a></h3>
+<p>Originally found <a class="reference external" href="https://tex.stackexchange.com/questions/85335/how-to-change-dot-spacing-in-dotfill">here</a>, this is useful to change the spacing to some custom value. I found this useful when making my own list of symbols and abbreviations, because in the document I was using the lists of figures and tables used a non-default spacing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">{</span><span class="n">article</span><span class="p">}</span>
+
+\<span class="n">makeatletter</span> <span class="o">%</span> <span class="n">Change</span> <span class="n">category</span> <span class="n">code</span> <span class="n">of</span> <span class="o">@</span> <span class="kn">from</span> <span class="nn">default</span>
+\<span class="n">newcommand</span> \<span class="n">Dotfill</span> <span class="p">{</span>\<span class="n">leavevmode</span> \<span class="n">leaders</span> \<span class="n">hb</span><span class="nd">@xt</span><span class="o">@</span> <span class="mf">.8</span><span class="n">em</span><span class="p">{</span>\<span class="n">hss</span><span class="o">.</span>\<span class="n">hss</span><span class="p">}</span>\<span class="n">hfill</span> \<span class="n">kern</span> \<span class="n">z</span><span class="o">@</span><span class="p">}</span> <span class="o">%</span> \<span class="n">leaders</span> <span class="n">to</span> <span class="n">align</span> <span class="n">dots</span> <span class="n">across</span> <span class="n">different</span> <span class="n">lines</span>
+\<span class="n">makeatother</span> <span class="o">%</span> <span class="n">Return</span> <span class="n">category</span> <span class="n">code</span> <span class="n">of</span> <span class="o">@</span> <span class="n">to</span> <span class="n">default</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+\<span class="n">Dotfill</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>In the body at the desired location, use the command <code class="docutils literal notranslate"><span class="pre">\input{&lt;filename&gt;.tex</span></code> to include the figure.</p>
 </section>
-<div class="toctree-wrapper compound">
+<section id="easy-view-names">
+<h3>Easy view names<a class="headerlink" href="#easy-view-names" title="Permalink to this heading">#</a></h3>
+<p>My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that “Views” have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing <code class="docutils literal notranslate"><span class="pre">L$_\text{S}$L--L$_\text{S}$L</span></code>. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution to make it nicer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">{</span><span class="n">article</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsmath</span><span class="p">}</span> <span class="o">%</span> <span class="n">For</span> \<span class="n">ensuremath</span><span class="p">{}</span>
+
+\<span class="n">newcommand</span><span class="p">{</span>\<span class="n">View</span><span class="p">}[</span><span class="mi">2</span><span class="p">]{</span>\<span class="n">textAsMath</span><span class="p">{</span><span class="c1">#1}--\textAsMath{#2}} % Join transmit and receive paths</span>
+\<span class="n">def</span>\<span class="n">fmtloop</span><span class="c1">#1{%</span>
+  \<span class="n">ifx</span>\<span class="n">relax</span><span class="c1">#1 % If at end of the string</span>
+    \<span class="k">else</span>
+      \<span class="n">ifcat_</span><span class="c1">#1 % If subscript</span>
+        <span class="c1">#1</span>
+      \<span class="k">else</span>\<span class="n">ifcat</span><span class="o">^</span><span class="c1">#1 % If superscript</span>
+        <span class="c1">#1</span>
+      \<span class="k">else</span>
+        \<span class="n">text</span><span class="p">{</span><span class="c1">#1} % Otherwise probably text</span>
+      \<span class="n">fi</span>\<span class="n">fi</span>\<span class="n">expandafter</span>\<span class="n">fmtloop</span><span class="o">%</span> <span class="n">Next</span> <span class="n">iteration</span>
+  \<span class="n">fi</span><span class="p">}</span>
+\<span class="n">def</span>\<span class="n">textAsMath</span><span class="c1">#1{\ensuremath{\fmtloop#1\relax}}% Recursive loop through string</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+\<span class="n">View</span><span class="p">{</span><span class="n">L_SL</span><span class="p">}{</span><span class="n">L_SL</span><span class="p">};</span>
+\<span class="n">View</span><span class="p">{</span><span class="n">L_</span><span class="p">{</span><span class="n">Backwall</span><span class="p">}</span><span class="n">L</span><span class="p">}{</span><span class="n">L_</span><span class="p">{</span><span class="n">Backwall</span><span class="p">}</span><span class="n">L</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+</pre></div>
 </div>
+<p>If anybody reading this knows a better way to do this kind of thing, please get in touch! While this works for the intended purpose, I don’t know how widely applicable it would be beyond this. For example, currently I’m chaining two “if” statements which would make extending it more difficult to manage – an “or” statement would be good for the current implementation, or else some sort of “switch” statement or pattern matching would be good for generalisability.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -423,7 +453,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/m2tikz"
+            path: "./content/LaTeX"
         },
         predefinedOutput: true
     }
@@ -441,20 +471,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../LaTeX/index.html"
+       href="../mamba/part1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">LaTeX</p>
+        <p class="prev-next-title">Setting up a new environment</p>
       </div>
     </a>
     <a class="right-next"
-       href="part1.html"
+       href="../m2tikz/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Workarounds</p>
+        <p class="prev-next-title">matlab2tikz</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -473,7 +503,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Macros</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dotfill">Dotfill</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-view-names">Easy view names</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
