@@ -390,49 +390,49 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="latex">
 <h1>LaTeX<a class="headerlink" href="#latex" title="Permalink to this heading">#</a></h1>
-<p>This is a collection of useful tips and tricks for using LaTeX. This is not a guide to use LaTeX - if you don’t know how to use it, I recommend you use <a class="reference external" href="https://www.overleaf.com">Overleaf</a> to get started (it is cloud based so you don’t have to install anything). Find an example project and use that to begin with.</p>
+<p>This is a collection of useful tips and tricks for using LaTeX. This is not a guide to use LaTeX – if you don’t know how to use it, I recommend you use <a class="reference external" href="https://www.overleaf.com">Overleaf</a> to get started (it is cloud based so you don’t have to install anything). Find an example project and use that to begin with.</p>
 <section id="macros">
 <h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading">#</a></h2>
 <p>The equivalent of functions in programming, you can use macros to make repetitive actions easier.</p>
 <section id="dotfill">
 <h3>Dotfill<a class="headerlink" href="#dotfill" title="Permalink to this heading">#</a></h3>
 <p>Originally found <a class="reference external" href="https://tex.stackexchange.com/questions/85335/how-to-change-dot-spacing-in-dotfill">here</a>, this is useful to change the spacing to some custom value. I found this useful when making my own list of symbols and abbreviations, because in the document I was using the lists of figures and tables used a non-default spacing.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">{</span><span class="n">article</span><span class="p">}</span>
+<div class="highlight-tex notranslate"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
 
-\<span class="n">makeatletter</span> <span class="o">%</span> <span class="n">Change</span> <span class="n">category</span> <span class="n">code</span> <span class="n">of</span> <span class="o">@</span> <span class="kn">from</span> <span class="nn">default</span>
-\<span class="n">newcommand</span> \<span class="n">Dotfill</span> <span class="p">{</span>\<span class="n">leavevmode</span> \<span class="n">leaders</span> \<span class="n">hb</span><span class="nd">@xt</span><span class="o">@</span> <span class="mf">.8</span><span class="n">em</span><span class="p">{</span>\<span class="n">hss</span><span class="o">.</span>\<span class="n">hss</span><span class="p">}</span>\<span class="n">hfill</span> \<span class="n">kern</span> \<span class="n">z</span><span class="o">@</span><span class="p">}</span> <span class="o">%</span> \<span class="n">leaders</span> <span class="n">to</span> <span class="n">align</span> <span class="n">dots</span> <span class="n">across</span> <span class="n">different</span> <span class="n">lines</span>
-\<span class="n">makeatother</span> <span class="o">%</span> <span class="n">Return</span> <span class="n">category</span> <span class="n">code</span> <span class="n">of</span> <span class="o">@</span> <span class="n">to</span> <span class="n">default</span>
+<span class="k">\makeatletter</span> <span class="c">% Change category code of @ from default</span>
+<span class="k">\newcommand</span> <span class="k">\Dotfill</span> <span class="nb">{</span><span class="k">\leavevmode</span> <span class="k">\leaders</span> <span class="k">\hb@xt@</span> .8em<span class="nb">{</span><span class="k">\hss</span>.<span class="k">\hss</span><span class="nb">}</span><span class="k">\hfill</span> <span class="k">\kern</span> <span class="k">\z@</span><span class="nb">}</span> <span class="c">% \leaders to align dots across different lines</span>
+<span class="k">\makeatother</span> <span class="c">% Return category code of @ to default</span>
 
-\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
-\<span class="n">Dotfill</span>
-\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\Dotfill</span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </pre></div>
 </div>
 </section>
 <section id="easy-view-names">
 <h3>Easy view names<a class="headerlink" href="#easy-view-names" title="Permalink to this heading">#</a></h3>
-<p>My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that “Views” have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing <code class="docutils literal notranslate"><span class="pre">L$_\text{S}$L--L$_\text{S}$L</span></code>. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution to make it nicer.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">{</span><span class="n">article</span><span class="p">}</span>
-\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsmath</span><span class="p">}</span> <span class="o">%</span> <span class="n">For</span> \<span class="n">ensuremath</span><span class="p">{}</span>
+<p>My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that “Views” have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing <code class="docutils literal notranslate"><span class="pre">L$_\text{S}$L--L$_\text{S}$L</span></code>. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution based on <a class="reference external" href="https://tex.stackexchange.com/questions/359189/looping-over-strings">this thread</a> to make it nicer.</p>
+<div class="highlight-tex notranslate"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span> <span class="c">% For \ensuremath{}</span>
 
-\<span class="n">newcommand</span><span class="p">{</span>\<span class="n">View</span><span class="p">}[</span><span class="mi">2</span><span class="p">]{</span>\<span class="n">textAsMath</span><span class="p">{</span><span class="c1">#1}--\textAsMath{#2}} % Join transmit and receive paths</span>
-\<span class="n">def</span>\<span class="n">fmtloop</span><span class="c1">#1{%</span>
-  \<span class="n">ifx</span>\<span class="n">relax</span><span class="c1">#1 % If at end of the string</span>
-    \<span class="k">else</span>
-      \<span class="n">ifcat_</span><span class="c1">#1 % If subscript</span>
-        <span class="c1">#1</span>
-      \<span class="k">else</span>\<span class="n">ifcat</span><span class="o">^</span><span class="c1">#1 % If superscript</span>
-        <span class="c1">#1</span>
-      \<span class="k">else</span>
-        \<span class="n">text</span><span class="p">{</span><span class="c1">#1} % Otherwise probably text</span>
-      \<span class="n">fi</span>\<span class="n">fi</span>\<span class="n">expandafter</span>\<span class="n">fmtloop</span><span class="o">%</span> <span class="n">Next</span> <span class="n">iteration</span>
-  \<span class="n">fi</span><span class="p">}</span>
-\<span class="n">def</span>\<span class="n">textAsMath</span><span class="c1">#1{\ensuremath{\fmtloop#1\relax}}% Recursive loop through string</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\View</span><span class="nb">}</span>[2]<span class="nb">{</span><span class="k">\textAsMath</span><span class="nb">{</span>#1<span class="nb">}</span>--<span class="k">\textAsMath</span><span class="nb">{</span>#2<span class="nb">}}</span> <span class="c">% Join transmit and receive paths</span>
+<span class="k">\def\fmtloop</span>#1<span class="nb">{</span><span class="c">%</span>
+  <span class="k">\ifx\relax</span>#1 <span class="c">% If at end of the string</span>
+    <span class="k">\else</span>
+      <span class="k">\ifcat_</span>#1 <span class="c">% If subscript</span>
+        #1
+      <span class="k">\else\ifcat</span><span class="nb">^</span>#1 <span class="c">% If superscript</span>
+        #1
+      <span class="k">\else</span>
+        <span class="k">\text</span><span class="nb">{</span>#1<span class="nb">}</span> <span class="c">% Otherwise probably text</span>
+      <span class="k">\fi\fi\expandafter\fmtloop</span><span class="c">% Next iteration</span>
+  <span class="k">\fi</span><span class="nb">}</span>
+<span class="k">\def\textAsMath</span>#1<span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\fmtloop</span>#1<span class="k">\relax</span><span class="nb">}}</span><span class="c">% Recursive loop through string</span>
 
-\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
-\<span class="n">View</span><span class="p">{</span><span class="n">L_SL</span><span class="p">}{</span><span class="n">L_SL</span><span class="p">};</span>
-\<span class="n">View</span><span class="p">{</span><span class="n">L_</span><span class="p">{</span><span class="n">Backwall</span><span class="p">}</span><span class="n">L</span><span class="p">}{</span><span class="n">L_</span><span class="p">{</span><span class="n">Backwall</span><span class="p">}</span><span class="n">L</span><span class="p">}</span>
-\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\View</span><span class="nb">{</span>L<span class="nb">_</span>SL<span class="nb">}{</span>L<span class="nb">_</span>SL<span class="nb">}</span>;
+<span class="k">\View</span><span class="nb">{</span>L<span class="nb">_{</span>Backwall<span class="nb">}</span>L<span class="nb">}{</span>L<span class="nb">_{</span>Backwall<span class="nb">}</span>L<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </pre></div>
 </div>
 <p>If anybody reading this knows a better way to do this kind of thing, please get in touch! While this works for the intended purpose, I don’t know how widely applicable it would be beyond this. For example, currently I’m chaining two “if” statements which would make extending it more difficult to manage – an “or” statement would be good for the current implementation, or else some sort of “switch” statement or pattern matching would be good for generalisability.</p>

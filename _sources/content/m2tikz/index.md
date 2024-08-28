@@ -18,7 +18,7 @@ Move your `.tex` file and any accompanying files (e.g. sometimes a `.png` file m
 
 Within the preamble of the Latex document, add in the following lines:
 
-```
+```tex
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usetikzlibrary{plotmarks}

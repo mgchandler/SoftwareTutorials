@@ -1,6 +1,6 @@
 # LaTeX
 
-This is a collection of useful tips and tricks for using LaTeX. This is not a guide to use LaTeX - if you don't know how to use it, I recommend you use [Overleaf](https://www.overleaf.com) to get started (it is cloud based so you don't have to install anything). Find an example project and use that to begin with.
+This is a collection of useful tips and tricks for using LaTeX. This is not a guide to use LaTeX -- if you don't know how to use it, I recommend you use [Overleaf](https://www.overleaf.com) to get started (it is cloud based so you don't have to install anything). Find an example project and use that to begin with.
 
 
 ## Macros
@@ -12,7 +12,7 @@ The equivalent of functions in programming, you can use macros to make repetitiv
 
 Originally found [here](https://tex.stackexchange.com/questions/85335/how-to-change-dot-spacing-in-dotfill), this is useful to change the spacing to some custom value. I found this useful when making my own list of symbols and abbreviations, because in the document I was using the lists of figures and tables used a non-default spacing.
 
-```
+```tex
 \documentclass{article}
 
 \makeatletter % Change category code of @ from default
@@ -27,9 +27,9 @@ Originally found [here](https://tex.stackexchange.com/questions/85335/how-to-cha
 
 ### Easy view names
 
-My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that "Views" have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing ``L$_\text{S}$L--L$_\text{S}$L``. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution to make it nicer.
+My PhD thesis was all about ultrasonic imaging using the multi-view total focusing method. This is well beyond the scope of this guide, but the point is that "Views" have names, which are written as strings of letters which are joined by subscripted letters. Originally I was approaching this by writing ``L$_\text{S}$L--L$_\text{S}$L``. While it does result in the correct formatting, it is slow to write and is difficult to read in the code editor. I put together the following solution based on [this thread](https://tex.stackexchange.com/questions/359189/looping-over-strings) to make it nicer.
 
-```
+```tex
 \documentclass{article}
 \usepackage{amsmath} % For \ensuremath{}
 

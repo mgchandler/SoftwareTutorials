@@ -396,12 +396,12 @@ document.write(`
 <p>Call <code class="docutils literal notranslate"><span class="pre">matlab2tikz</span></code> either in the script or in the command window. Save the file with some filename as <code class="docutils literal notranslate"><span class="pre">&lt;filename&gt;.tex</span></code> - this take the currently open figure and save a <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file which can be included in your Latex document.</p>
 <p>Move your <code class="docutils literal notranslate"><span class="pre">.tex</span></code> file and any accompanying files (e.g. sometimes a <code class="docutils literal notranslate"><span class="pre">.png</span></code> file may be generated as well) to your Latex project directory (or upload them to Overleaf, etc.).</p>
 <p>Within the preamble of the Latex document, add in the following lines:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">usepackage</span><span class="p">{</span><span class="n">pgfplots</span><span class="p">}</span>
-\<span class="n">pgfplotsset</span><span class="p">{</span><span class="n">compat</span><span class="o">=</span><span class="n">newest</span><span class="p">}</span>
-\<span class="n">usetikzlibrary</span><span class="p">{</span><span class="n">plotmarks</span><span class="p">}</span>
-\<span class="n">usetikzlibrary</span><span class="p">{</span><span class="n">arrows</span><span class="o">.</span><span class="n">meta</span><span class="p">}</span>
-\<span class="n">usepgfplotslibrary</span><span class="p">{</span><span class="n">patchplots</span><span class="p">}</span>
-\<span class="n">usepackage</span><span class="p">{</span><span class="n">grffile</span><span class="p">}</span>
+<div class="highlight-tex notranslate"><div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>pgfplots<span class="nb">}</span>
+<span class="k">\pgfplotsset</span><span class="nb">{</span>compat=newest<span class="nb">}</span>
+<span class="k">\usetikzlibrary</span><span class="nb">{</span>plotmarks<span class="nb">}</span>
+<span class="k">\usetikzlibrary</span><span class="nb">{</span>arrows.meta<span class="nb">}</span>
+<span class="k">\usepgfplotslibrary</span><span class="nb">{</span>patchplots<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>grffile<span class="nb">}</span>
 </pre></div>
 </div>
 <p>In the body at the desired location, use the command <code class="docutils literal notranslate"><span class="pre">\input{&lt;filename&gt;.tex</span></code> to include the figure.</p>

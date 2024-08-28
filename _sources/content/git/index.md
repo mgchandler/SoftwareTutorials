@@ -21,18 +21,18 @@ For personal use, there isn't much need to do any configuration as any actions m
 
 Set your name using
 
-```
+```console
 git config --global user.name <Your name>
 ```
 
 and your email address using
 
-```
+```console
 git config --global user.email <your_email>
 ```
 
 You will also need to set a text editor. You can make use of command line editors such as `nano` or `vim`, and on Windows you can use an external application such as Notepad or Notepad++, however to do this you will need to provide the full path to the .exe file.
 
-```
+```console
 git config --global core.editor <preferred editor>
 ```

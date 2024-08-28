@@ -10,26 +10,26 @@ Mamba discourages the installation of anything in the base environment. Instead,
 - `ssgb` : an environment for a major project, containing packages for working with [Gaussian Processes](https://gaussianprocess.org/).
 
 To set up a new environment, use the following command template:
-```
+```console
 mamba create -n <environment_name> <list of packages...>
 ```
 
 After creation, activate this environment to use it with
-```
+```console
 mamba activate <environment_name>
 ```
 and deactivate an active environment with
-```
+```console
 mamba deactivate
 ```
 
 Install a new package to an active environment from a specific channel (e.g. `conda-forge`) with
-```
+```console
 mamba install <package1> -c <channel> ...
 ```
 
 Finally, to delete an environment, use
-```
+```console
 mamba env remove -n <environment_name>
 ```
 

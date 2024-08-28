@@ -385,23 +385,23 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">ssgb</span></code> : an environment for a major project, containing packages for working with <a class="reference external" href="https://gaussianprocess.org/">Gaussian Processes</a>.</p></li>
 </ul>
 <p>To set up a new environment, use the following command template:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">environment_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">list</span> <span class="n">of</span> <span class="n">packages</span><span class="o">...&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mamba create -n &lt;environment_name&gt; &lt;list of packages...&gt;</span>
 </pre></div>
 </div>
 <p>After creation, activate this environment to use it with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">activate</span> <span class="o">&lt;</span><span class="n">environment_name</span><span class="o">&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mamba activate &lt;environment_name&gt;</span>
 </pre></div>
 </div>
 <p>and deactivate an active environment with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">deactivate</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mamba deactivate</span>
 </pre></div>
 </div>
 <p>Install a new package to an active environment from a specific channel (e.g. <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>) with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">package1</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">channel</span><span class="o">&gt;</span> <span class="o">...</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mamba install &lt;package1&gt; -c &lt;channel&gt; ...</span>
 </pre></div>
 </div>
 <p>Finally, to delete an environment, use</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">env</span> <span class="n">remove</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">environment_name</span><span class="o">&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mamba env remove -n &lt;environment_name&gt;</span>
 </pre></div>
 </div>
 <p>For more info, see the more detailed <a class="reference external" href="https://mamba.readthedocs.io/en/latest/index.html">documentation page</a>.</p>

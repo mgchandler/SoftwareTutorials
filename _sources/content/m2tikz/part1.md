@@ -11,7 +11,7 @@ There are a few issues which may arise when using matlab2tikz for the first time
 There are solutions to more common problems and pitfalls on matlab2tikz's own [GitHub page](https://github.com/matlab2tikz/matlab2tikz) - see there if you're having other problems.
 
 I've compiled my workarounds to all of this in the [following function](https://github.com/mgchandler/SoftwareTutorials/tree/main/content/m2tikz/m2tikz.m):
-```
+```matlab
 function m2tikz(filename, varargin)
 % Wrapper for matlab2tikz which solves the problems I have had. Leaves all
 % text in the file, sets the figure size to 80% of linewidth, and includes

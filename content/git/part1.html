@@ -388,11 +388,11 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="initialise-a-repository">
 <h1>Initialise a Repository<a class="headerlink" href="#initialise-a-repository" title="Permalink to this heading">#</a></h1>
 <p>Git works by saving content within a directory, essentially taking a snapshot of the current state of all of the files inside the directory. Make a new directory either in the file explorer or using <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> from the command line, and navigate into it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd &lt;path&gt;</span>
 </pre></div>
 </div>
 <p>Now we need to initialise a repository with Git. A repository, or “repo”, is the name for this folder which will be managed by Git. To do this, use</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">init</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git init</span>
 </pre></div>
 </div>
 <p>inside the space. We have now initialised an empty repository, and can now tell Git to start tracking files.</p>
@@ -403,16 +403,16 @@ document.write(`
 <p>We can now start using Git to manage files. Make a new text file in the repo.</p>
 <a class="reference internal image-reference" href="../../_images/file.png"><img alt="Text file in repo" src="../../_images/file.png" style="width: 500px;" /></a>
 <p>Currently, the text file <code class="docutils literal notranslate"><span class="pre">readme.txt</span></code> is located within the repo directory. Git will keep track of what’s going on inside the repo - we can check this using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git status</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/status.png"><img alt="Output from git status" src="../../_images/status.png" style="width: 500px;" /></a>
 <p>We can see that the file has been detected in the repo, but it is not yet being tracked. To tell Git to start tracking the file, use</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git add readme.txt`
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git add readme.txt`</span>
 </pre></div>
 </div>
 <p>We can add multiple files at once by chaining filenames, or use</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git add .</span>
 </pre></div>
 </div>
 <p>to add everything in the directory at once.</p>
