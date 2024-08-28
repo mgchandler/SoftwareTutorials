@@ -17,6 +17,9 @@ parts:
         title: Mamba
         sections:
           - file: content/mamba/part1
+      
+      - file: content/LaTeX/index
+        title: LaTeX
           
       - file: content/m2tikz/index
         title: matlab2tikz
