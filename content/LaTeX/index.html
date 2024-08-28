@@ -401,7 +401,8 @@ document.write(`
 <div class="highlight-tex notranslate"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\makeatletter</span> <span class="c">% Change category code of @ from default</span>
-<span class="k">\newcommand</span> <span class="k">\Dotfill</span> <span class="nb">{</span><span class="k">\leavevmode</span> <span class="k">\leaders</span> <span class="k">\hb@xt@</span> .8em<span class="nb">{</span><span class="k">\hss</span>.<span class="k">\hss</span><span class="nb">}</span><span class="k">\hfill</span> <span class="k">\kern</span> <span class="k">\z@</span><span class="nb">}</span> <span class="c">% \leaders to align dots across different lines</span>
+<span class="k">\newcommand</span> <span class="k">\Dotfill</span> <span class="nb">{</span><span class="k">\leavevmode</span> <span class="k">\leaders</span> <span class="k">\hb@xt@</span> .8em<span class="nb">{</span><span class="k">\hss</span>.<span class="k">\hss</span><span class="nb">}</span><span class="k">\hfill</span> <span class="k">\kern</span> <span class="k">\z@</span><span class="nb">}</span> <span class="c">% \leaders to align dots across different lines.</span>
+<span class="c">% Set `.8em` to some other value to adjust spacing.</span>
 <span class="k">\makeatother</span> <span class="c">% Return category code of @ to default</span>
 
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>

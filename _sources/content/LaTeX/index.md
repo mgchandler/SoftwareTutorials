@@ -16,7 +16,8 @@ Originally found [here](https://tex.stackexchange.com/questions/85335/how-to-cha
 \documentclass{article}
 
 \makeatletter % Change category code of @ from default
-\newcommand \Dotfill {\leavevmode \leaders \hb@xt@ .8em{\hss.\hss}\hfill \kern \z@} % \leaders to align dots across different lines
+\newcommand \Dotfill {\leavevmode \leaders \hb@xt@ .8em{\hss.\hss}\hfill \kern \z@} % \leaders to align dots across different lines.
+% Set `.8em` to some other value to adjust spacing.
 \makeatother % Return category code of @ to default
 
 \begin{document}
