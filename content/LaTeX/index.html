@@ -375,6 +375,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Macros</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dotfill">Dotfill</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-view-names">Easy view names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion">Unit conversion</a></li>
 </ul>
 </li>
 </ul>
@@ -436,6 +437,69 @@ document.write(`
 </pre></div>
 </div>
 <p>If anybody reading this knows a better way to do this kind of thing, please get in touch! While this works for the intended purpose, I don’t know how widely applicable it would be beyond this. For example, currently I’m chaining two “if” statements which would make extending it more difficult to manage – an “or” statement would be good for the current implementation, or else some sort of “switch” statement or pattern matching would be good for generalisability.</p>
+</section>
+<section id="unit-conversion">
+<h3>Unit conversion<a class="headerlink" href="#unit-conversion" title="Permalink to this heading">#</a></h3>
+<p>When making figures, I usually use Python to save pdf files from <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. While an installed version of LaTeX is required to compile mathtext, it ensures: any text has consistent formatting with the final document; is searchable; and if the figure size is set correctly then the font size is also consistent. The width of the page in which text can be written in a tex file is obtained using <code class="docutils literal notranslate"><span class="pre">\linewidth</span></code>, however when this is included in a document it returns a value in pts. I use the following command which I found in <a class="reference external" href="https://tex.stackexchange.com/questions/8260/what-are-the-various-units-ex-em-in-pt-bp-dd-pc-expressed-in-mm">this thread</a> to convert.</p>
+<div class="highlight-tex notranslate"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\makeatletter</span>
+<span class="k">\def\convertto</span>#1#2<span class="nb">{</span><span class="k">\strip@pt\dimexpr</span> #2*65536/<span class="k">\number\dimexpr</span> 1#1<span class="nb">}</span>
+<span class="k">\makeatother</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<span class="k">\the\linewidth</span> <span class="c">% Returns value in points.</span>
+
+<span class="k">\convertto</span><span class="nb">{</span>in<span class="nb">}{</span><span class="k">\linewidth</span><span class="nb">}</span> <span class="c">% Returns value in inches.</span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</pre></div>
+</div>
+<p>I also use the following structure in my Python code when making images. This is included because I copied and pasted this a lot while writing my thesis, so I think it’s useful to have it in one place rather than across a lot of different files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">import</span> <span class="n">GridSpec</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;module://matplotlib_inline.backend_inline&#39;</span><span class="p">)</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">)</span> <span class="c1"># Reset from any previous run.</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span><span class="p">)</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>              <span class="c1"># Requires local install of LaTeX. I have used MikTeX on Windows, and TexLive on Linux.</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text.latex&#39;</span><span class="p">,</span> <span class="n">preamble</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+        <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{amsmath}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{fouriernc}</span><span class="s1">&#39;</span><span class="p">,</span>           <span class="c1"># Nice fonts - must be installed in local version of LaTeX.</span>
+        <span class="sa">r</span><span class="s1">&#39;\usepackage[T1]</span><span class="si">{fontenc}</span><span class="s1">&#39;</span><span class="p">,</span>         <span class="c1"># Same as above.</span>
+    <span class="p">]))</span>
+
+    <span class="n">save_pdf</span> <span class="o">=</span> <span class="kc">False</span>                         <span class="c1"># Switch for easy debugging before actually saving.</span>
+
+    <span class="k">if</span> <span class="n">save_pdf</span><span class="p">:</span>
+        <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;pgf&#39;</span><span class="p">,</span> <span class="n">rcfonts</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;pgf&#39;</span><span class="p">,</span> <span class="n">preamble</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>   <span class="c1"># Also need to set pgf params when saving.</span>
+            <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{url}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{unicode_math}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{amsmath}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{fouriernc}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">r</span><span class="s1">&#39;\usepackage[T1]</span><span class="si">{fontenc}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="p">]))</span>
+
+    <span class="n">gs</span>  <span class="o">=</span> <span class="n">Gridspec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">ax</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta x$ (mm)&#39;</span><span class="p">)</span>        <span class="c1"># Can include compilable mathtext!</span>
+
+    <span class="k">if</span> <span class="n">save_pdf</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;figure1.pdf&quot;</span><span class="p">),</span>
+            <span class="n">pad_inches</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -506,6 +570,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Macros</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dotfill">Dotfill</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-view-names">Easy view names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion">Unit conversion</a></li>
 </ul>
 </li>
 </ul>
