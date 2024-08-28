@@ -114,9 +114,9 @@ if __name__ == '__main__':
 
     if save_pdf:
         plt.savefig(
-            os.path.join(".", "figure1.pdf"),
+            os.path.join('.', 'figure1.pdf'),
             pad_inches=0,
-            bbox_inches="tight",
+            bbox_inches='tight',
         )
     else:
         plt.show()
